@@ -1,30 +1,32 @@
 class Solution {
     public void sortColors(int[] nums) {
 
-        Arrays.sort(nums);
-       
+               int low=0 , mid=0;
+        int high=nums.length-1;
+        int temp;
         
-    }
-}
-// using Three-Pointer Approach
-class Solution {
-    public void sortColors(int[] nums) {
-
-        int zero = 0;
-        int two = nums.length;
-        int temp = 0;
-        int n = nums.length;
-
-        while(temp < n && temp <= two){
-            if(nums[temp] == 0){
-                swap(nums, temp++, zero++);
+        while(mid<=high)
+            switch(nums[mid]){
+                    case 0:{
+                        temp=nums[low];
+                        nums[low]=nums[mid];
+                        nums[mid]=temp;
+                        low++;
+                        mid++;
+                        break;
+                    }
+                case 1:{
+                    mid++;
+                    break;
+                }
+                case 2:{
+                    temp=nums[mid];
+                    nums[mid]=nums[high];
+                    nums[high]=temp;
+                    high--;
+                    break;
+                }
             }
-            else if(nums[temp] == 2){
-                swap(nums, temp, two--)
-            }
-            else
-            temp++;
-        }
         
     }
 }
